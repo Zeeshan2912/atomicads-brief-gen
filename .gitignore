@@ -1,0 +1,56 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+.Python
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables
+.env
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.spec
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node (if you later add frontend)
+node_modules/
+npm-debug.log
+
+# LangGraph Checkpoint DB (optional)
+checkpoints.db
