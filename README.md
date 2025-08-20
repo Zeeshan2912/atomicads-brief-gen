@@ -136,15 +136,18 @@ uvicorn src.main:app --reload
 
 **Live URL:** [https://atomicads-brief-gen-api.onrender.com]
 
+
 ✅ **Sample Request**
- $ curl -X POST "https://atomicads-brief-gen-api.onrender.com/brief" \
--H "Content-Type: application/json" \
--d '{"topic":"Edge Computing","depth":2,"user_id":"zeeshan"}' | jq
+
+```bash
+curl -X POST "https://atomicads-brief-gen-api.onrender.com/brief" \
+  -H "Content-Type: application/json" \
+  -d '{"topic":"Edge Computing","depth":2,"user_id":"zeeshan"}' | jq
+```
 
 ✅ **Sample Response**
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   572    0   516  100    56   1461    158 --:--:-- --:--:-- --:--:--  1625
+
+```json
 {
   "topic": "Edge Computing",
   "depth": 2,
@@ -178,6 +181,7 @@ uvicorn src.main:app --reload
   },
   "generated_at": "2025-08-13T15:30:00+00:00"
 }
+```
 
 ---
 
@@ -185,17 +189,22 @@ uvicorn src.main:app --reload
 
 You can use the CLI to generate an ad brief directly from the terminal.
 
-### ✅ Run the API (if using local host)
+
+### ✅ Run the API (if using localhost)
+
 ```bash
 uvicorn src.main:app --reload
+```
 
 ✅ Use the CLI
- bash
+
+```bash
 python src/cli.py --topic "Edge Computing" --depth 2 --user-id "zeeshan"
+```
 
 ✅ Example Output:
-json
 
+```json
 {
   "title": "The Future of Edge Computing",
   "summary": "Edge computing brings computation closer to the data source for faster processing...",
@@ -205,47 +214,34 @@ json
     "Optimizes IoT performance"
   ]
 }
-
-----
-## **📺 Demo Video**
-
-**Watch here:** \[Insert YouTube or Google Drive Link] *(Update after recording)*
-
----
-
-## **📊 LangSmith Trace**
-
-* **Trace Link:** \[Insert LangSmith Trace URL]
-* **Screenshot:** *(Add screenshot image here)*
-
----
-
-## **📐 Architecture Diagram**
-
-```mermaid
-graph TD
-A[User Input] --> B[FastAPI Endpoint]
-B --> C[LangChain Pipeline]
-C --> D[LLM Model]
-D --> E[Generated Brief]
 ```
 
 ---
 
-## **🔮 Future Enhancements**
+## 📊 LangSmith Trace Integration
+This project uses **LangSmith** for observability and debugging of the LangChain graph execution.
 
-* Add multiple ad formats (social, video, display ads).
-* Support for multilingual briefs.
-* Fine-tuned models for industry-specific briefs.
+### ✅ How LangSmith is Enabled:
+- `LANGCHAIN_TRACING_V2` set to `true`
+- `LANGCHAIN_ENDPOINT` configured to `https://api.smith.langchain.com`
+- `LANGCHAIN_API_KEY` provided via `.env`
 
+These settings are applied in `src/main.py`:
+
+```python
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
+
+## ** Screenshots **
+1. [docs\langsmith_trace1.png]
+2. [docs\langsmith_trace2.png]
+
+## ** Trace Link: **
+[https://smith.langchain.com/o/6d6ff1ac-7726-418c-b579-5ea3b6f294ce/projects] 
 ---
 
-## **👨‍💻 Author**
-
-**Mohammed Zeeshan Khan**
-📧 Email: \[mohammedzeeshankhan1999@gmail.com]
-🔗 GitHub: \[https://github.com/Zeeshan2912]
-
----
+## ** Screen Recording **
+[https://drive.google.com/file/d/1ajPvE48dxtTte-wpOFM4z0vmrRQJR_qL/view?usp=sharing]
 
 
