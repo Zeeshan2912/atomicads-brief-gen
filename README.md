@@ -138,7 +138,7 @@ Edge computing brings computation and data storage closer to devices where it is
 
 ## **🌐 Deployed API**
 
-**Live URL:** [https://atomicads-api.onrender.com](https://atomicads-api.onrender.com) *(Update after deployment)*
+**Live URL:** [https://atomicads-brief-gen-api.onrender.com](https://atomicads-brief-gen-api.onrender.com) *(Update after deployment)*
 
 ---
 
