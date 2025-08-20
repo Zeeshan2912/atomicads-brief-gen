@@ -17,3 +17,4 @@ langsmith
 langchain_community
 aiohttp
 aiosqlite
+openai

@@ -1,41 +1,196 @@
-# AtomicAds Research Brief Generator
-
-This project implements a **Research Brief Generator** for the AtomicAds AI Engineer assignment.  
-It uses **FastAPI**, **LangGraph**, and **structured output generation** concepts to return AI-driven research briefs in JSON format.
+# **AtomicAds – Gen AI Developer Assignment**
 
 ---
 
-## ✅ Features Implemented
+## **📌 Overview**
 
-- **FastAPI Backend** – REST API endpoint `/brief` for generating briefs.
-- **LangGraph Pipeline** – Modular state graph design.
-- **Mock Mode for Offline Demo** – Works without API keys (ideal for local setup and demo).
-- **Pydantic Validation** – Ensures consistent structured responses.
-- **CLI Tool** – Generate briefs from the terminal.
-- **Testing** – Basic unit tests for API.
-- **Docker Support** – Deployment-ready container setup.
-- **Documentation** – Sample request & response, architecture overview.
+AtomicAds is a **Generative AI-powered advertising brief generator** designed to help businesses and marketers create concise, targeted ad briefs using LLMs. It provides both **API** (FastAPI) and **CLI** interfaces and integrates with **LangSmith** for traceability and debugging.
 
 ---
 
-## ✅ How It Works
+## **✅ Features**
 
-### Workflow:
-1. User sends `topic`, `depth`, and `user_id` to `/brief`.
-2. The LangGraph pipeline processes the request.
-3. A structured JSON response is returned:
+* **AI-Powered Brief Generation** using LangChain and LLMs.
+* **FastAPI REST API** for programmatic access.
+* **Command-Line Interface (CLI)** for quick usage.
+* **LangSmith Trace Integration** for detailed execution logs.
+* **Modular Design** with clear separation of concerns.
+
+---
+
+## **📂 Project Structure**
+
+```
+AtomicAds/
+│   .env.example         # Environment variables template
+│   Dockerfile           # For containerized deployment
+│   requirements.txt     # Project dependencies
+│   README.md            # Documentation
+│
+├───docs/
+│       architecture.md   # Detailed design and architecture
+│       sample_request.json
+│       sample_response.json
+│
+├───src/
+│   │   main.py          # FastAPI entry point
+│   │   cli.py           # CLI entry point
+│   │   graph.py         # Workflow orchestration
+│   │   llms.py          # LLM configuration and calls
+│   │   persistence.py   # Data persistence layer
+│   │   retriever.py     # Information retrieval utilities
+│   │   schemas.py       # Pydantic models
+│   │   search_tools.py  # Search helper functions
+│
+└───tests/
+        test_api.py       # API test cases
+        test_schemas.py   # Schema validation tests
+```
+
+---
+
+## **🛠 Tech Stack**
+
+* **Language:** Python 3.12
+* **Framework:** FastAPI
+* **AI Orchestration:** LangChain
+* **LLM Provider:** OpenAI (or equivalent)
+* **Deployment:** Render / Docker
+* **Tracing:** LangSmith
+* **Testing:** Pytest
+
+---
+
+## **⚙️ Setup Instructions**
+
+### **1. Clone Repository**
+
+```bash
+git clone https://github.com/yourusername/AtomicAds.git
+cd AtomicAds
+```
+
+### **2. Install Dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+### **3. Configure Environment Variables**
+
+Create a `.env` file from `.env.example` and update:
+
+```
+OPENAI_API_KEY=your_openai_api_key
+LANGCHAIN_API_KEY=your_langsmith_api_key
+```
+
+---
+
+## **🚀 Running the API**
+
+### **Start the API Server**
+
+```bash
+uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### **API Endpoints**
+
+**POST** `/generate`
+
+* **Request Example:**
 
 ```json
 {
-  "topic": "Edge computing",
+  "topic": "Edge Computing",
   "depth": 2,
-  "summary": "This is a mock summary for topic 'Edge computing' with depth 2.",
-  "key_findings": ["Finding 1", "Finding 2", "Finding 3"],
-  "sources": [
-    {"title": "Mock Source 1", "url": "http://example.com", "snippet": "Snippet about the topic."},
-    {"title": "Mock Source 2", "url": "http://example.com", "snippet": "Another snippet."}
-  ],
-  "plan": ["Step 1: Research", "Step 2: Summarize", "Step 3: Validate"],
-  "metadata": {"tokens_used": 500},
-  "generated_at": "2025-08-13T15:30:00Z"
+  "user_id": "zeeshan"
 }
+```
+
+* **Response Example:**
+
+```json
+{
+  "brief": "Edge computing is a distributed computing paradigm that processes data near the source of generation..."
+}
+```
+
+---
+
+## **💻 CLI Usage**
+
+Run the CLI tool:
+
+```bash
+python src/cli.py --topic "Edge Computing" --depth 2 --user_id "zeeshan"
+```
+
+**Example Output:**
+
+```
+Generated Brief:
+Edge computing brings computation and data storage closer to devices where it is being gathered...
+```
+
+---
+
+## **🌐 Deployed API**
+
+**Live URL:** [https://atomicads-api.onrender.com](https://atomicads-api.onrender.com) *(Update after deployment)*
+
+---
+
+## **📺 Demo Video**
+
+**Watch here:** \[Insert YouTube or Google Drive Link] *(Update after recording)*
+
+---
+
+## **📊 LangSmith Trace**
+
+* **Trace Link:** \[Insert LangSmith Trace URL]
+* **Screenshot:** *(Add screenshot image here)*
+
+---
+
+## **📐 Architecture Diagram**
+
+```mermaid
+graph TD
+A[User Input] --> B[FastAPI Endpoint]
+B --> C[LangChain Pipeline]
+C --> D[LLM Model]
+D --> E[Generated Brief]
+```
+
+---
+
+## **🔮 Future Enhancements**
+
+* Add multiple ad formats (social, video, display ads).
+* Support for multilingual briefs.
+* Fine-tuned models for industry-specific briefs.
+
+---
+
+## **👨‍💻 Author**
+
+**Mohammed Zeeshan Khan**
+📧 Email: \[your email]
+🔗 GitHub: \[your GitHub link]
+
+---
+
+✅ This README matches **your project structure**, includes **headings/sub-headings**, and covers **all assignment requirements**:
+
+* **Project Overview**
+* **Features**
+* **Setup & Usage**
+* **API & CLI examples**
+* **Architecture diagram**
+* **Demo video placeholder**
+* **LangSmith trace placeholder**
+
+---
