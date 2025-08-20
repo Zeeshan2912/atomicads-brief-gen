@@ -132,33 +132,70 @@ uvicorn src.main:app --reload
 
 ---
 
-## **💻 CLI Usage**
-
-Run the CLI tool:
-
-```bash
-python src/cli.py --topic "Edge Computing" --depth 2 --user_id "zeeshan"
-```
-
-**Example Output:**
-
-```
-Generated Brief:
-Edge computing brings computation and data storage closer to devices where it is being gathered...
-```
-
----
-
 ## **🌐 Deployed API**
 
 **Live URL:** [https://atomicads-brief-gen-api.onrender.com]
 
 ✅ **Sample Request**
-curl -X POST "https://atomicads-api.onrender.com/brief" \
+ $ curl -X POST "https://atomicads-brief-gen-api.onrender.com/brief" \
 -H "Content-Type: application/json" \
--d '{"topic":"Edge Computing","depth":2,"user_id":"zeeshan"}'
+-d '{"topic":"Edge Computing","depth":2,"user_id":"zeeshan"}' | jq
 
 ✅ **Sample Response**
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   572    0   516  100    56   1461    158 --:--:-- --:--:-- --:--:--  1625
+{
+  "topic": "Edge Computing",
+  "depth": 2,
+  "summary": "This is a mock summary for topic 'Edge Computing' with depth 2.",
+  "key_findings": [
+    "Finding 1",
+    "Finding 2",
+    "Finding 3"
+  ],
+  "sources": [
+    {
+      "title": "Mock Source 1",
+      "url": "http://example.com/",
+      "snippet": "Snippet about the topic.",
+      "rank": null
+    },
+    {
+      "title": "Mock Source 2",
+      "url": "http://example.com/",
+      "snippet": "Another snippet.",
+      "rank": null
+    }
+  ],
+  "plan": [
+    "Step 1: Research",
+    "Step 2: Summarize",
+    "Step 3: Validate"
+  ],
+  "metadata": {
+    "tokens_used": 500
+  },
+  "generated_at": "2025-08-13T15:30:00+00:00"
+}
+
+---
+
+## 💻 **CLI Usage**
+
+You can use the CLI to generate an ad brief directly from the terminal.
+
+### ✅ Run the API (if using local host)
+```bash
+uvicorn src.main:app --reload
+
+✅ Use the CLI
+ bash
+python src/cli.py --topic "Edge Computing" --depth 2 --user-id "zeeshan"
+
+✅ Example Output:
+json
+
 {
   "title": "The Future of Edge Computing",
   "summary": "Edge computing brings computation closer to the data source for faster processing...",
@@ -169,8 +206,7 @@ curl -X POST "https://atomicads-api.onrender.com/brief" \
   ]
 }
 
----
-
+----
 ## **📺 Demo Video**
 
 **Watch here:** \[Insert YouTube or Google Drive Link] *(Update after recording)*
