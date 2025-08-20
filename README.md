@@ -66,8 +66,8 @@ AtomicAds/
 ### **1. Clone Repository**
 
 ```bash
-git clone https://github.com/yourusername/AtomicAds.git
-cd AtomicAds
+git clone https://github.com/Zeeshan2912/atomicads-brief-gen.git
+cd atomicads-brief-gen
 ```
 
 ### **2. Install Dependencies**
@@ -81,8 +81,14 @@ pip install -r requirements.txt
 Create a `.env` file from `.env.example` and update:
 
 ```
-OPENAI_API_KEY=your_openai_api_key
-LANGCHAIN_API_KEY=your_langsmith_api_key
+xGROQ_API_KEY=your_groq_api_key
+PRIMARY_GROQ_MODEL=llama-3.3-70b-versatile
+FALLBACK_GROQ_MODEL=llama-3.1-8b-instant
+SERPAPI_API_KEY=your_serpapi_key
+LANGSMITH_API_KEY=your_langsmith_key
+LANGSMITH_TRACING=true
+DATABASE_URL=sqlite:///./checkpoints.db
+
 ```
 
 ---
@@ -92,7 +98,7 @@ LANGCHAIN_API_KEY=your_langsmith_api_key
 ### **Start the API Server**
 
 ```bash
-uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn src.main:app --reload
 ```
 
 ### **API Endpoints**
@@ -109,12 +115,19 @@ uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
 }
 ```
 
-* **Response Example:**
+* **Expected Response:**
 
 ```json
 {
-  "brief": "Edge computing is a distributed computing paradigm that processes data near the source of generation..."
+  "title": "The Future of Edge Computing",
+  "summary": "Edge computing brings computation closer to the data source for faster processing...",
+  "key_points": [
+    "Reduces latency",
+    "Supports real-time processing",
+    "Optimizes IoT performance"
+  ]
 }
+
 ```
 
 ---
@@ -138,7 +151,23 @@ Edge computing brings computation and data storage closer to devices where it is
 
 ## **🌐 Deployed API**
 
-**Live URL:** [https://atomicads-brief-gen-api.onrender.com](https://atomicads-brief-gen-api.onrender.com) *(Update after deployment)*
+**Live URL:** [https://atomicads-brief-gen-api.onrender.com]
+
+✅ **Sample Request**
+curl -X POST "https://atomicads-api.onrender.com/brief" \
+-H "Content-Type: application/json" \
+-d '{"topic":"Edge Computing","depth":2,"user_id":"zeeshan"}'
+
+✅ **Sample Response**
+{
+  "title": "The Future of Edge Computing",
+  "summary": "Edge computing brings computation closer to the data source for faster processing...",
+  "key_points": [
+    "Reduces latency",
+    "Supports real-time processing",
+    "Optimizes IoT performance"
+  ]
+}
 
 ---
 
@@ -178,19 +207,9 @@ D --> E[Generated Brief]
 ## **👨‍💻 Author**
 
 **Mohammed Zeeshan Khan**
-📧 Email: \[your email]
-🔗 GitHub: \[your GitHub link]
+📧 Email: \[mohammedzeeshankhan1999@gmail.com]
+🔗 GitHub: \[https://github.com/Zeeshan2912]
 
 ---
 
-✅ This README matches **your project structure**, includes **headings/sub-headings**, and covers **all assignment requirements**:
 
-* **Project Overview**
-* **Features**
-* **Setup & Usage**
-* **API & CLI examples**
-* **Architecture diagram**
-* **Demo video placeholder**
-* **LangSmith trace placeholder**
-
----
